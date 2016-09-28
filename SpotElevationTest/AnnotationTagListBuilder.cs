@@ -75,7 +75,7 @@ namespace SpotElevationTest
                 }
               }
             }
-            catch( Exception ex )
+            catch( Exception)
             {
               //do nothing
             }

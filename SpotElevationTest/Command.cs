@@ -18,7 +18,7 @@ namespace SpotElevationTest
     private UIDocument _uiDoc;
     private Autodesk.Revit.Creation.Document _docCreator;
     private List<FamilySymbolWrapper> _spotElevationTagList = new List<FamilySymbolWrapper>();
-    private Autodesk.Revit.Creation.Application Create;
+    //private Autodesk.Revit.Creation.Application Create;
 
     public Result Execute( ExternalCommandData commandData, ref string message, ElementSet elements )
     {
