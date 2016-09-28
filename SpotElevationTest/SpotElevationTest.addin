@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Assembly>C:\Autodesk.Consulting.SpotElevationTest\SpotElevationTest.dll</Assembly>
+    <ClientId>B19C002A-2DF6-46DE-A36F-C7E3A31863C3</ClientId>
+    <FullClassName>SpotElevationTest.Command</FullClassName>
+    <Text>Add Spot Elevation Test</Text>
+    <Description>Adds spot elevations to desired structural framing model element</Description>
+    <VisibilityMode>AlwaysVisible</VisibilityMode>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk, www.autodesk.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>
