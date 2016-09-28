@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RevitAddIns>
   <AddIn Type="Command">
-    <Assembly>C:\Autodesk.Consulting.SpotElevationTest\SpotElevationTest.dll</Assembly>
+    <Assembly>SpotElevationTest.dll</Assembly>
     <ClientId>B19C002A-2DF6-46DE-A36F-C7E3A31863C3</ClientId>
     <FullClassName>SpotElevationTest.Command</FullClassName>
     <Text>Add Spot Elevation Test</Text>
