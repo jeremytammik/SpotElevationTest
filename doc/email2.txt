@@ -1,0 +1,45 @@
+What I am trying to achieve:
+Within Revit 2016 I need to add spot elevations to structural members in a model within the active view. The user will initiate the command which will then add spot elevations to the desired locations on each member in the view. The positions needed are the start point (position 0), end point (position 1), and midpoint (position .5) of the member’s curve.
+
+The behavior I observe versus what I expect, and why this is a problem:
+Using the attached code, I am able to add spot elevations in a number of views for a single model element. However, similar model elements (same family and type) in other locations throw one of the following errors:
+Error 1: Spot Dimension does not lie on its reference.
+Error 2: One or more Spot Dimension References are no longer valid. Spot Dimensions can generally reference only those references which have valid coordinates in the view.
+
+Minimal Sample Model:
+See attached Revit Model named “VerySimpleStructuralModel.rvt”.
+
+C# Add-in code :
+See attached VS solution compressed into a .zip file.
+
+Step-by-step instructions:
+
+1. With the add-in loaded into Revit 2016 open the model named “VerySimpleStructuralModel.rvt”
+2. The model should open to the Level1 Structural Plan (Notice in the view that there are 5 beam elements and 4 columns)
+3. Initiate the SpotEelvationTest Command through the add-ins tab and External Tools Fly-out.
+a. Select the floating beam when prompted and choose a location for the new spot elevation (start, end, mid) from the task dialog
+b. Observe the successful creation of the new spot elevation at the desired location
+4. Repeat the process in step 3 above and choose any of the 4 remaining beams and observe the following:
+a. The “floating” beam north of the other model elements will allow a spot elevation to be added in all views except the West and East Sections
+i. Within the West and East Sections the error message below is given when the error is caught.
+1. “One or more Spot Dimension references are no longer valid. Spot Dimensions can generally reference only those references which have valid coordinates in the view.”
+b. The remaining beams in this Level1 Structural Plan will allow spot elevations to be added to the midpoint location only. 
+i. If the start point or end point is selected when adding a spot elevation, the following error message is given when the error is caught:
+1. “Spot Dimension does not lie on its reference”
+ii. These remaining elements allow the spot elevation at the midpoint in all of the other views I have tried, and fail with the start and end points as noted above.
+5. (New Information due to building the sample test code)
+a. Within the Level1 Structural Plan view, select any of the 4 beams that are located between the 4 corner columns
+b. Copy, or move the beams away from the columns
+i. If using the move command, select the option to Unjoin Elements when prompted with the warning dialog
+ii. Now with a similar, but “floating” beam perform the actions in step 3 above and choose start point or end point from the command options. 
+1. Notice that the spot elevation is now created as desired at the start or end of the beam as desired.
+2. I believe that the reference issue is being generated when the beam is cleaned-up with the vertical columns.
+a. I created a similar issue with a new beam between the two horizontal beams that are on the north and south edges that span east and west in direction. 
+i. Adding a new horizontal beam between these two beams which also cleans up with them generates the same error.
+
+So, after I created this sample set of files, I see two problem areas for me which are:
+
+1. When a beam (or potentially any other structural framing element) is cleaned up with another structural framing element, the ability to get a reference for the end point of the beam geometry is compromised.
+2. When a beam (or potentially any other structural framing element) is not entirely in the view, then an error is potentially thrown relating to the spot dimension reference no longer being valid. (see error message in 4.a.i.1 above)
+o Note that his seems to be the case for me when the beam is parallel to the view direction and the start or end of the beam is out of the bounds of the crop box.
+§ As a test, I adjusted the crop box in a view such that the crop box clipped the end of a beam that was perpendicular to the view direction (meaning it was running left to right in the section view) and the spot elevation was created successfully without throwing an error.

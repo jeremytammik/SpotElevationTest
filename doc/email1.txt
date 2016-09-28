@@ -1,0 +1,12 @@
+I am hoping that you will have some insight into my problems adding spot elevations to model elements within Revit.  I have read your blog post http://thebuildingcoder.typepad.com/blog/2010/01/spot-elevation-creation-on-top-of-beam.html (based on a VSTA Macro in Revit 2010) and I have implemented the updated methods for finding a top reference that the Building Coder Samples include.  When I run my code, I am only intermittently successful however.  I am getting one of two errors currently when I try to add the spot elevation to sloping beams.
+ 
+Error 1: Spot Dimension does not lie on its reference.
+Error 2: One or more Spot Dimension References are no longer valid.  Spot Dimensions can generally reference only those references which have valid coordinates in the view.
+ 
+cid:image005.png@01D21899.A862DD00
+ 
+/v/C/a/vs/SpotElevationTest/doc/image005.png
+
+I can get the points on the elements that I want to add the spot elevation, but I think I am not understanding well enough the retrieval of the reference in which the spot elevation is associated. 
+ 
+Do you have any suggestions?  I didn’t want to email the entire API alias since you had covered this topic and least once in the past and once in a sample code update.
